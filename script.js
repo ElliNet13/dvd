@@ -1,9 +1,8 @@
 new p5(function (sketch) {
   var images = [];
   var imageIndex = 0;
-  var position = sketch.createVector(0, 0);
-  var velocity = p5.Vector.fromAngle(45);
-  velocity.mult(5);
+  var position;
+  var velocity;
 
   /**
    * Checks boundary collision.
@@ -44,6 +43,17 @@ new p5(function (sketch) {
    */
   sketch.setup = function () {
     sketch.createCanvas(window.innerWidth, window.innerHeight);
+
+    // Set random initial position
+    position = sketch.createVector(
+      sketch.random(0, sketch.width),
+      sketch.random(0, sketch.height)
+    );
+
+    // Set random initial velocity
+    var angle = sketch.random(TWO_PI); // random angle in radians
+    velocity = p5.Vector.fromAngle(angle);
+    velocity.mult(sketch.random(2, 6)); // random speed between 2 and 6
   };
 
   /**
@@ -53,13 +63,15 @@ new p5(function (sketch) {
     sketch.background("#111");
     var image = images[imageIndex];
     var hasCollision = checkBoundaryCollision(image);
+
     if (hasCollision) {
       imageIndex++;
-      if (imageIndex + 1 > images.length) {
+      if (imageIndex >= images.length) {
         imageIndex = 0;
       }
       image = images[imageIndex];
     }
+
     position.add(velocity);
     sketch.image(image, position.x, position.y);
   };
