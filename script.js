@@ -33,7 +33,7 @@ new p5(function (sketch) {
    * Preload.
    */
   sketch.preload = function () {
-    for (var i = 1; i < 7; i++) {
+    for (var i = 1; i < 6; i++) {
       var image = sketch.loadImage("assets/image" + i + ".png");
       images.push(image);
     }
