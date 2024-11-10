@@ -33,8 +33,8 @@ new p5(function (sketch) {
    * Preload.
    */
   sketch.preload = function () {
-    for (var i = 1; i < 8; i++) {
-      var image = sketch.loadImage("assets/ElliNet13" + i + ".png");
+    for (var i = 1; i < 7; i++) {
+      var image = sketch.loadImage("assets/image" + i + ".png");
       images.push(image);
     }
   };
