@@ -38,23 +38,26 @@ new p5(function (sketch) {
     }
   };
 
-  /**
-   * Setup.
-   */
-  sketch.setup = function () {
-    sketch.createCanvas(window.innerWidth, window.innerHeight);
+/**
+ * Setup.
+ */
+sketch.setup = function () {
+  sketch.createCanvas(window.innerWidth, window.innerHeight);
 
-    // Set random initial position
-    position = sketch.createVector(
-      sketch.random(0, sketch.width),
-      sketch.random(0, sketch.height)
-    );
+  // Set padding equal to half the image size to ensure it stays within bounds
+  var padding = 302 / 2;
 
-    // Set random initial velocity
-    var angle = sketch.random(sketch.TWO_PI); // random angle in radians
-    velocity = p5.Vector.fromAngle(angle);
-    velocity.mult(sketch.random(2, 6)); // random speed between 2 and 6
-  };
+  // Set random initial position with padding to avoid edges
+  position = sketch.createVector(
+    sketch.random(padding, sketch.width - padding),
+    sketch.random(padding, sketch.height - padding)
+  );
+
+  // Set random initial velocity
+  var angle = sketch.random(sketch.TWO_PI);
+  velocity = p5.Vector.fromAngle(angle);
+  velocity.mult(sketch.random(2, 6)); // random speed between 2 and 6
+};
 
   /**
    * Draw.
