@@ -51,7 +51,7 @@ new p5(function (sketch) {
     );
 
     // Set random initial velocity
-    var angle = sketch.random(TWO_PI); // random angle in radians
+    var angle = sketch.random(sketch.TWO_PI); // random angle in radians
     velocity = p5.Vector.fromAngle(angle);
     velocity.mult(sketch.random(2, 6)); // random speed between 2 and 6
   };
